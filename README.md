@@ -1,72 +1,35 @@
-# 🏠 Nestora
+# Nestora
 
-Nestora is a modern real-estate landing website built with Next.js, TypeScript, Tailwind CSS, and Framer Motion. It focuses on a polished property-marketing experience with animated content, responsive layouts, visual property browsing, testimonials, and video-driven sections.
+Nestora is a real-estate landing page concept built with Next.js, React, TypeScript, Tailwind CSS, and Framer Motion. The experience is designed around thoughtful property discovery, editorial typography, architectural photography, and clear next steps.
 
-> **Project type:** Frontend-focused real-estate marketing / landing website.
-> **Current scope:** Static/demo property content with interactive UI behavior. There is no backend, database, authentication, or real property-management workflow in the current codebase.
+## Design direction
 
-## Features
+- Forest green, warm cream, sage, and clay accents.
+- Playfair Display-inspired editorial headlines paired with a calm sans-serif interface.
+- Image-led responsive hero and curated property presentation.
+- Accessible mobile navigation, property selection tabs, and scroll-aware motion.
+- Reduced-motion support for animated sections.
+- Consistent rounded calls to action, clear section anchors, and responsive spacing.
 
-### Hero and Navigation
-- Responsive desktop and mobile hero layouts
-- Animated hero headline using Framer Motion
-- Property/interior imagery
-- Sticky responsive navigation
-- Mobile menu with keyboard Escape handling
-- Reduced-motion handling for the animated hero
+## Current experience
 
-### Property Showcase
-- Typed property data rendered from TypeScript objects
-- Property selection interface
-- Dynamic property details
-- Year, address, area, bedrooms, bathrooms, and price
-- Responsive property presentation
-- Horizontal location/property slider
-- Pointer-drag interaction
+- Responsive navigation and cinematic image-led hero.
+- Editorial brand statement and approach sections.
+- Selectable illustrative property collection with location, size, bed/bath, and sample price details.
+- Draggable horizontal lifestyle image rail.
+- Brand principles section instead of fabricated testimonials and partner logos.
+- Responsive inquiry UI with client-side validation.
+- Updated metadata and PWA theme colors.
 
-### Visual Sections
-- Video-backed analytics/intro section
-- Animated numerical counters
-- Residential property introduction
-- Image and video testimonials
-- Company/partner showcase
-- Contact and lead-capture presentation
-- Buy / Sell calls to action
-- Separate responsive desktop/mobile contact layouts
+## Demo limitations
 
-## Architecture
+This is a frontend concept, not a live listing service. The property names, addresses, prices, and images in the showcase are illustrative. There is no property API, database, authentication, saved-search service, or lead-management backend. The inquiry form shows a clear demo status and does not send or store submissions.
 
-Built with the Next.js App Router and reusable TypeScript components.
+Before production use, replace the sample listings with verified inventory, configure a real contact destination, connect an enquiry endpoint, and review the image license/usage requirements for the chosen assets.
 
-```text
-Nestora/
-├── app/
-│   ├── layout.tsx
-│   ├── page.tsx
-│   ├── globals.css
-│   └── manifest.json
-├── components/
-│   ├── ContactSection/
-│   ├── FeedbackSection/
-│   ├── HeroSection/
-│   ├── PropertySection/
-│   ├── SubHeroSection/
-│   ├── CTAButton.tsx
-│   ├── Footer.tsx
-│   └── Navbar.tsx
-├── hooks/
-│   └── ScrollCountAnimation.ts
-├── types/
-│   ├── feedback.ts
-│   ├── location.ts
-│   └── properties.ts
-└── public/
-    ├── Images/
-    └── Video/
-```
+## Tech stack
 
-## Tech Stack
-- Next.js 16
+- Next.js 16 / App Router
 - React 19
 - TypeScript
 - Tailwind CSS
@@ -74,62 +37,16 @@ Nestora/
 - React Icons
 - Next Image
 
-## Data and Interactivity
-
-Property and location data are currently defined in the frontend. The property interface contains fields such as id, name, year, address, area, bath, bed, price, and image.
-
-The contact area contains email and budget inputs, but the current implementation does not persist submissions or send them to an external service.
-
-## Accessibility and Responsive Behavior
-- Semantic section structure
-- Accessible navigation attributes such as aria-label, aria-expanded, and aria-controls
-- Keyboard Escape handling for the mobile menu
-- Reduced-motion handling
-- Responsive mobile/tablet/desktop layouts
-- Image alt text
-
-## Running Locally
+## Run locally
 
 ```bash
-git clone https://github.com/aaquifqureshi/Nestora.git
-cd Nestora
 npm install
 npm run dev
 ```
 
-Production build:
+Production build and lint:
 
 ```bash
 npm run build
-npm start
-```
-
-Lint:
-
-```bash
 npm run lint
 ```
-
-## Current Limitations
-- No backend or database
-- No authentication
-- No real property search/filtering
-- No CMS integration
-- No persistent lead management
-- No real booking or transaction workflow
-- Several CTA links are presentation-only
-
-## Possible Next Improvements
-- Property API/database
-- Search and filtering
-- Property detail routes
-- Authentication and user accounts
-- Agent/admin dashboard
-- Lead management
-- CMS integration
-- API-backed inquiry forms
-- Analytics and conversion tracking
-
-## Project Context
-
-Nestora was built as a frontend web project focused on responsive layout design, reusable React components, animation, interactive property presentation, and polished visual storytelling.

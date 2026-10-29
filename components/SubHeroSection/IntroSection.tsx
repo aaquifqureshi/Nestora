@@ -1,102 +1,76 @@
-'use client';
+'use client'
 
-import Image from 'next/image';
-import CTAButton from '../CTAButton';
+import Image from 'next/image'
+import { motion, useReducedMotion } from 'framer-motion'
+import CTAButton from '../CTAButton'
+
+const approachImage = 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1600&q=85'
+
+const approachPoints = [
+  { number: '01', title: 'Start with what matters', body: 'The location, the feeling, the space to grow — begin with your priorities.' },
+  { number: '02', title: 'Explore thoughtfully', body: 'Compare homes with a clearer view of the details that shape everyday living.' },
+  { number: '03', title: 'Move with confidence', body: 'When a place feels right, use it as the starting point for your next conversation.' },
+]
 
 export default function IntroSection() {
+  const reduceMotion = useReducedMotion()
+
   return (
-    <section className="bg-bg-sheet py-16 md:py-24 px-8 md:px-16 lg:px-24 font-helvetica">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div className="space-y-8">
-            <div>
-              <p
-                className="
-                  text-base sm:text-lg md:text-xl lg:text-2xl
-                  font-normal
-                  md:leading-7 lg:leading-[1.25]
-                  tracking-wide
-                  max-w-prose md:max-w-lg lg:max-w-none
-                  lg:ml-28 lg:mb-16 lg:mt-16 lg:text-nowrap
-                "
-              >
-                Discover stunning residential buildings and modern
-                <br className="hidden lg:block" />
-                apartments designed for every lifestyle — whether
-                <br className="hidden lg:block" />
-                you're buying, renting, or investing.
-              </p>
+    <section id="approach" className="bg-brand-cream py-16 sm:py-20 lg:py-28">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
+        <div className="mb-12 grid gap-7 md:grid-cols-2 md:items-end lg:mb-16">
+          <div>
+            <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.24em] text-brand-forest sm:text-xs">Less noise, more clarity</p>
+            <h2 className="max-w-2xl font-display text-4xl leading-[1.02] tracking-editorial text-brand-ink sm:text-5xl md:text-6xl">
+              Your next chapter deserves a <em className="font-normal text-brand-forest">better beginning.</em>
+            </h2>
+          </div>
+          <p className="max-w-lg text-sm leading-7 text-brand-muted md:justify-self-end sm:text-base sm:leading-8">
+            We make room for the practical and the personal. A home is an address, of course — but it’s also the quiet morning, the dinner with friends, and the everyday rituals that make it yours.
+          </p>
+        </div>
+
+        <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-16">
+          <motion.div
+            initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7 }}
+            className="relative"
+          >
+            <div className="relative aspect-[1.12] overflow-hidden rounded-t-[8rem] sm:rounded-t-[11rem] lg:aspect-[0.96]">
+              <Image
+                src={approachImage}
+                alt="Sunlit modern living room with natural materials and garden views"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover transition-transform duration-[1200ms] hover:scale-[1.035]"
+              />
             </div>
+            <div className="absolute -bottom-5 right-4 max-w-[14rem] border border-brand-line bg-white p-5 shadow-soft sm:right-8 sm:p-6">
+              <p className="font-display text-2xl leading-tight text-brand-ink">A place for your life to unfold.</p>
+              <p className="mt-3 text-[9px] uppercase tracking-[0.18em] text-brand-muted">The Nestora philosophy</p>
+            </div>
+          </motion.div>
 
-            <div className="relative">
-              <div className="relative inline-block ml-0 lg:ml-28">
-                <Image
-                  src="/Images/myrtle-property.webp"
-                  alt="Modern property"
-                  width={514}
-                  height={484}
-                  className="w-full lg:w-[514px] lg:h-[484px] object-cover"
-                  sizes="(max-width: 1024px) 100vw, 514px"
-                  loading="lazy"
-                />
-              </div>
-
-              <div className="absolute -bottom-12 left-0 hidden lg:flex bg-brand-orange text-white w-[180px] h-[180px] lg:w-[228px] lg:h-[228px] p-6 lg:p-8 flex-col justify-between">
-                <div className="absolute top-4 right-4 text-white text-xl lg:text-2xl font-light">
-                  +
-                </div>
-
-                <div className="space-y-2 mt-auto">
-                  <div className="text-3xl lg:text-4xl font-light">25 Years</div>
-                  <div className="text-xs lg:text-sm leading-tight font-light">
-                    Of successful<br />
-                    experience in trading
+          <div className="pt-5 lg:pt-0">
+            <div className="divide-y divide-brand-line border-y border-brand-line">
+              {approachPoints.map((point) => (
+                <div key={point.number} className="grid grid-cols-[2.5rem_1fr] gap-4 py-5 sm:grid-cols-[3rem_1fr] sm:gap-5 sm:py-7">
+                  <span className="pt-1 text-[10px] font-semibold tracking-[0.16em] text-brand-clay">{point.number}</span>
+                  <div>
+                    <h3 className="font-display text-2xl text-brand-ink sm:text-3xl">{point.title}</h3>
+                    <p className="mt-2 text-sm leading-7 text-brand-muted">{point.body}</p>
                   </div>
                 </div>
-              </div>
-
-              <div className="mt-4 lg:hidden flex items-center">
-                <div className="bg-brand-orange text-white w-[140px] h-[140px] p-4 flex flex-col justify-between relative">
-                  <div className="absolute top-3 right-3 text-white text-lg font-light">+</div>
-
-                  <div className="space-y-1 mt-auto">
-                    <div className="text-xl font-light">25 Years</div>
-                    <div className="text-xs leading-tight font-light">
-                      Of successful experience
-                    </div>
-                  </div>
-                </div>
-              </div>
-
+              ))}
+            </div>
+            <div className="mt-8">
+              <CTAButton href="#properties">Find your next home</CTAButton>
             </div>
           </div>
-
-          <div className="flex flex-col justify-end space-y-6 pb-0 lg:pb-18">
-            <div className="space-y-6">
-              <CTAButton href="">
-                +EXPLORE PROPERTIES
-              </CTAButton>
-
-              <div className="grid grid-cols-2 gap-8 md:gap-12">
-                <div>
-                  <div className="text-xl font-medium pb-2 mb-2 border-b border-black/20">Sell</div>
-                  <div className="text-xs leading-relaxed">
-                    Speedily say has suitable<br/>disposal add boy.
-                  </div>
-                </div>
-
-                <div>
-                  <div className="text-xl font-medium pb-2 mb-2 border-b border-black/20">Buy</div>
-                  <div className="text-xs leading-relaxed">
-                    Passage its ten led removal<br/>Preference any astonished
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
     </section>
-  );
+  )
 }

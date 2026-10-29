@@ -1,149 +1,127 @@
-'use client';
+'use client'
 
-import PropertyDetails from "./PropertyDetails";
-import CTAButton from "../CTAButton";
-import { useState } from "react";
-import type { Property } from "../../types/properties";
-import PropertySlider from "./PropertySlider";
+import { useState } from 'react'
+import PropertyDetails from './PropertyDetails'
+import CTAButton from '../CTAButton'
+import type { Property } from '@/types/properties'
+import PropertySlider from './PropertySlider'
+
+const properties: Property[] = [
+  {
+    id: 'willow-house',
+    name: 'The Willow House',
+    year: 2025,
+    address: 'Brooklyn, New York',
+    area: '2,850 sq ft',
+    bath: 3,
+    bed: 4,
+    price: '$1,240,000',
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=85',
+  },
+  {
+    id: 'cedar-house',
+    name: 'Cedar House',
+    year: 2024,
+    address: 'Austin, Texas',
+    area: '3,210 sq ft',
+    bath: 3,
+    bed: 4,
+    price: '$1,495,000',
+    image: 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=1800&q=85',
+  },
+  {
+    id: 'juniper-residence',
+    name: 'Juniper Residence',
+    year: 2025,
+    address: 'Los Angeles, California',
+    area: '2,320 sq ft',
+    bath: 2,
+    bed: 3,
+    price: '$2,150,000',
+    image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1800&q=85',
+  },
+  {
+    id: 'linden-retreat',
+    name: 'Linden Retreat',
+    year: 2023,
+    address: 'Portland, Oregon',
+    area: '1,890 sq ft',
+    bath: 2,
+    bed: 3,
+    price: '$980,000',
+    image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1800&q=85',
+  },
+  {
+    id: 'sol-house',
+    name: 'Sol House',
+    year: 2025,
+    address: 'Scottsdale, Arizona',
+    area: '2,760 sq ft',
+    bath: 3,
+    bed: 4,
+    price: '$1,075,000',
+    image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1800&q=85',
+  },
+]
 
 export default function PropertiesSection() {
-  const properties: Property[] = [
-    {
-      id: 'haig',
-      name: 'Haig',
-      year: 2024,
-      address: 'Van huren st quincy, threefold, 02301',
-      area: '925 M²',
-      bath: 3,
-      bed: 2,
-      price: '$24,458 USD',
-      image: '/Images/haig-property.webp'
-    },
-    {
-      id: 'myrtle-pool-house',
-      name: 'Myrtle Pool House',
-      year: 2023,
-      address: 'Myrtle avenue, brooklyn, NY 11205',
-      area: '1200 M²',
-      bath: 4,
-      bed: 3,
-      price: '$32,500 USD',
-      image: '/Images/myrtle-property.webp'
-    },
-    {
-      id: 'clifton',
-      name: 'Clifton',
-      year: 2023,
-      address: 'Clifton road, bristol, BS8 3JT',
-      area: '850 M²',
-      bath: 2,
-      bed: 2,
-      price: '$19,800 USD',
-      image: '/Images/clifton-property.webp'
-    },
-    {
-      id: 'sidney-house',
-      name: 'Sidney House',
-      year: 2022,
-      address: 'Sidney street, cambridge, CB2 3HX',
-      area: '1050 M²',
-      bath: 3,
-      bed: 3,
-      price: '$28,900 USD',
-      image: '/Images/sidney-property.webp'
-    },
-    {
-      id: 'sweetman',
-      name: 'Sweetman',
-      year: 2025,
-      address: 'Sweet street, cambridge, CB2 3HX',
-      area: '1250 M²',
-      bath: 2,
-      bed: 3,
-      price: '$14,900 USD',
-      image: '/Images/clifton-property.webp'
-    }
-  ];
-
-  const [selectedProperty, setSelectedProperty] = useState<Property>(properties[0]);
+  const [selectedProperty, setSelectedProperty] = useState<Property>(properties[0])
 
   return (
-    <section className="bg-bg-sheet py-16 md:py-24 font-helvetica">
-      <div className="max-w-7xl mx-auto px-8 md:px-16 lg:px-24">
-        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-12">
-          <div className="flex-1">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-light leading-tight whitespace-nowrap">
-              Latest<br />
-              Properties
-            </h1>
+    <section id="properties" className="bg-brand-cream py-16 sm:py-20 lg:py-28">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
+        <div className="mb-10 flex flex-col gap-8 lg:mb-14 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.24em] text-brand-forest sm:text-xs">A considered collection</p>
+            <h2 className="max-w-2xl font-display text-4xl leading-[1.02] tracking-editorial text-brand-ink sm:text-5xl md:text-6xl">
+              Homes with a <em className="font-normal text-brand-forest">point of view.</em>
+            </h2>
+            <p className="mt-4 max-w-xl text-sm leading-7 text-brand-muted sm:text-base">
+              Explore this illustrative collection of thoughtfully designed spaces. Listing details are sample content for this Nestora demo.
+            </p>
           </div>
+          <CTAButton href="#contact" className="self-start lg:self-auto">Talk through your search</CTAButton>
+        </div>
 
-          <div className="flex-1 flex justify-center">
-            <div
-              className="
-                flex gap-3
-                overflow-x-auto whitespace-nowrap py-2 md:py-0
-                md:flex-col md:gap-2 md:overflow-visible
-              "
-              role="tablist"
-              aria-label="Choose property"
-            >
-              {properties.map((property) => {
-                const active = selectedProperty.id === property.id;
-                return (
-                  <button
-                    key={property.id}
-                    onClick={() => setSelectedProperty(property)}
-                    role="tab"
-                    aria-selected={active}
-                    className={`flex items-center gap-2 text-sm transition-colors text-left ${
-                      active ? 'text-brand-orange font-medium' : 'text-gray-600 hover:text-gray-900'
-                    }`}
-                  >
-                    <span
-                      className={`text-lg leading-none transition-opacity duration-150 ${
-                        active ? 'opacity-100' : 'opacity-0'
-                      }`}
-                      aria-hidden
-                    >
-                      ■
-                    </span>
+        <div className="mb-7 -mx-1 flex gap-2 overflow-x-auto px-1 pb-2" role="tablist" aria-label="Select a sample property">
+          {properties.map((property, index) => {
+            const active = selectedProperty.id === property.id
+            return (
+              <button
+                key={property.id}
+                type="button"
+                role="tab"
+                aria-selected={active}
+                aria-controls="selected-property-details"
+                onClick={() => setSelectedProperty(property)}
+                className={`inline-flex shrink-0 items-center gap-3 rounded-full border px-4 py-3 text-left text-xs transition-all duration-300 ${
+                  active
+                    ? 'border-brand-forest bg-brand-forest text-white'
+                    : 'border-brand-line bg-transparent text-brand-muted hover:border-brand-sage hover:bg-white/70'
+                }`}
+              >
+                <span className={`text-[9px] tracking-[0.12em] ${active ? 'text-brand-sage' : 'text-brand-clay'}`}>0{index + 1}</span>
+                <span className="whitespace-nowrap">{property.name}</span>
+              </button>
+            )
+          })}
+        </div>
 
-                    <span
-                      className={active ? 'relative' : ''}
-                      style={
-                        active
-                          ? { textDecoration: 'line-through', textDecorationColor: 'currentColor' }
-                          : {}
-                      }
-                    >
-                      {property.name}
-                    </span>
-                  </button>
-                );
-              })}
+        <div id="selected-property-details" role="tabpanel" aria-label={selectedProperty.name}>
+          <PropertyDetails property={selectedProperty} />
+        </div>
+
+        <div className="mt-20 border-t border-brand-line pt-12 sm:mt-24 sm:pt-16">
+          <div className="mb-8 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.24em] text-brand-forest sm:text-xs">Find your setting</p>
+              <h3 className="font-display text-3xl tracking-editorial text-brand-ink sm:text-4xl">Different places. Different possibilities.</h3>
             </div>
-          </div>
-
-          <div className="flex-1 flex justify-end items-start text-sm">
-            <CTAButton href="#">+EXPLORE ALL PROPERTIES</CTAButton>
+            <p className="max-w-sm text-sm leading-7 text-brand-muted">Browse a few of the lifestyles a home can open up.</p>
           </div>
         </div>
       </div>
-
-      <div className="w-full">
-        <PropertyDetails property={selectedProperty} />
-      </div>
-
-      <div className="w-full space-y-12">
-        <div className="px-8 md:px-16 lg:px-24 w-full min-h-96 flex items-center justify-center">
-          <h2 className="pt-32 text-4xl md:text-5xl lg:text-6xl max-w-2xl leading-tight">
-            Mapped with<br className="hidden md:block" /> Purpose, Built with<br className="hidden md:block" />Heart
-          </h2>
-        </div>
-
-        <PropertySlider />
-      </div>
+      <PropertySlider />
     </section>
-  );
+  )
 }

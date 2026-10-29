@@ -10,27 +10,16 @@ import FeedbackSection from '@/components/FeedbackSection/FeedbackSection'
 export default function Page() {
   return (
     <>
-      <main className='bg-bg-sheet '>
+      <Navbar />
+      <main className="overflow-hidden bg-bg-sheet">
         <Hero />
-
-        <Navbar />
-        <section id='analytics'>
-          <AnalyticsSection />
-          <IntroSection />
-        </section>
-        <section id="properties">
-          <PropertiesSection />
-        </section>
-        <section>
-          <FeedbackSection />
-        </section>
-        <section>
-          <ContactSection />
-        </section>
+        <AnalyticsSection />
+        <IntroSection />
+        <PropertiesSection />
+        <FeedbackSection />
+        <ContactSection />
       </main>
-      <footer>
-        <Footer />
-      </footer>
+      <Footer />
     </>
   )
 }

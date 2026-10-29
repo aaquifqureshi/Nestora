@@ -1,54 +1,69 @@
-'use client';
+'use client'
 
-import CTAButton from "../CTAButton";
-import { Property } from "@/types/properties";
+import Image from 'next/image'
+import CTAButton from '../CTAButton'
+import type { Property } from '@/types/properties'
 
 export default function PropertyDetails({ property }: { property: Property }) {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-0 mt-12 px-8 md:px-16 lg:px-24">
-      <div className="relative h-[250px] md:h-[350px] lg:h-[450px]">
-        <img
+    <article className="grid overflow-hidden rounded-2xl border border-brand-line bg-white shadow-soft lg:grid-cols-[1.2fr_0.8fr]">
+      <div className="relative min-h-[300px] overflow-hidden sm:min-h-[420px] lg:min-h-[520px]">
+        <Image
           src={property.image}
-          alt={property.name}
-          className="w-full h-full object-cover"
+          alt={`Exterior and architectural details of ${property.name}`}
+          fill
+          sizes="(max-width: 1024px) 100vw, 62vw"
+          className="object-cover transition-transform duration-[1200ms] hover:scale-[1.035]"
         />
+        <div className="absolute left-5 top-5 flex items-center gap-2 rounded-full bg-brand-cream/95 px-4 py-2 text-[9px] font-semibold uppercase tracking-[0.16em] text-brand-forest shadow-sm sm:left-7 sm:top-7">
+          <span className="h-1.5 w-1.5 rounded-full bg-brand-forest" />
+          Sample listing
+        </div>
       </div>
 
-      <div className="w-full lg:w-[280px] p-6 lg:p-8 lg:pt-1 lg:pb-0 flex flex-col justify-between font-helvetica">
-        <div className="text-sm font-medium">{property.year}</div>
+      <div className="flex flex-col justify-between p-6 sm:p-8 lg:p-10">
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <p className="text-[10px] uppercase tracking-[0.18em] text-brand-muted">Featured residence</p>
+            <p className="mt-2 text-xs text-brand-muted">Concept collection · {property.year}</p>
+          </div>
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-brand-line text-lg text-brand-forest" aria-hidden="true">↗</span>
+        </div>
 
-        <div className="space-y-4">
-          <h2 className="text-4xl md:text-5xl font-light">{property.name}</h2>
-
-          <p className="text-xs leading-relaxed">
+        <div className="my-9">
+          <h3 className="font-display text-3xl leading-tight tracking-editorial text-brand-ink sm:text-4xl lg:text-5xl">{property.name}</h3>
+          <p className="mt-3 flex items-center gap-2 text-sm text-brand-muted">
+            <svg viewBox="0 0 24 24" className="h-4 w-4 text-brand-forest" fill="none" aria-hidden="true">
+              <path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z" stroke="currentColor" strokeWidth="1.5" />
+              <circle cx="12" cy="10" r="2.2" stroke="currentColor" strokeWidth="1.5" />
+            </svg>
             {property.address}
           </p>
+        </div>
 
-          <div className="flex flex-wrap gap-6 text-xs pt-2">
-            <div>
-              <span className="font-medium">{property.area}</span>
-            </div>
-            <div>
-              <span className="font-medium">{property.bath} Bath</span>
-            </div>
-            <div>
-              <span className="font-medium">{property.bed} Bed</span>
-            </div>
+        <div className="grid grid-cols-3 gap-3 border-y border-brand-line py-5">
+          <div>
+            <p className="text-[9px] uppercase tracking-[0.14em] text-brand-muted">Interior</p>
+            <p className="mt-2 text-sm font-semibold text-brand-ink">{property.area}</p>
+          </div>
+          <div>
+            <p className="text-[9px] uppercase tracking-[0.14em] text-brand-muted">Bedrooms</p>
+            <p className="mt-2 text-sm font-semibold text-brand-ink">{property.bed}</p>
+          </div>
+          <div>
+            <p className="text-[9px] uppercase tracking-[0.14em] text-brand-muted">Bathrooms</p>
+            <p className="mt-2 text-sm font-semibold text-brand-ink">{property.bath}</p>
           </div>
         </div>
 
-        <div className="space-y-4 pt-6">
-          <div className="text-xl font-helvetica font-medium">
-            {property.price}
+        <div className="mt-7 flex flex-wrap items-end justify-between gap-5">
+          <div>
+            <p className="text-[9px] uppercase tracking-[0.16em] text-brand-muted">Illustrative price</p>
+            <p className="mt-2 font-display text-3xl text-brand-ink">{property.price}</p>
           </div>
-
-          <div className="text-sm">
-            <CTAButton href={`#${property.id}`}>
-              +EXPLORE PROJECT
-            </CTAButton>
-          </div>
+          <CTAButton href="#contact">Enquire</CTAButton>
         </div>
       </div>
-    </div>
-  );
+    </article>
+  )
 }

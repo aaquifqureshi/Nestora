@@ -1,77 +1,54 @@
-import { IoArrowForward } from 'react-icons/io5';
+import Link from 'next/link'
+
+const footerLinks = [
+  { label: 'Properties', href: '#properties' },
+  { label: 'Our approach', href: '#approach' },
+  { label: 'The Nestora way', href: '#experience' },
+  { label: 'Start a conversation', href: '#contact' },
+]
 
 export default function Footer() {
   return (
-    <footer className="bg-brand-orange text-white px-8 py-12 md:px-12 lg:px-14 font-helvetica min-h-screen w-full flex items-center">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
-          <div className="space-y-8">
-            <nav className="space-y-4">
-              <div className="text-sm font-light tracking-wide"><a href='#properties'>PROPERTIES</a></div>
-              <div className="text-sm font-light"><a href=''>STUDIO</a></div>
-              <div className="text-sm font-light"><a href=''>PROCESS</a></div>
-              <div className="text-sm font-light">+ADD PROPERTY</div>
-            </nav>
-            
-            <div className="pt-4">
-              <div className="text-sm font-light mb-4">(info)</div>
-              <div className="space-y-2 text-sm">
-                <div><span className="font-medium">P:</span> +44 (445) 578 996</div>
-                <div><span className="font-medium">E:</span> example@gmail.com</div>
-                <div><span className="font-medium">A:</span> 101 Days Rd, Grange QLD 4051</div>
-              </div>
-            </div>
-
-            <div className="text-xs font-light pt-4">
-              <a href="#" className="hover:underline">Privacy Policy</a>
-              {' / '}
-              <a href="#" className="hover:underline">Terms and Conditions</a>
-            </div>
+    <footer className="bg-brand-deep text-white">
+      <div className="mx-auto max-w-7xl px-5 pb-6 pt-12 sm:px-8 sm:pt-16 lg:px-12 lg:pt-20">
+        <div className="grid gap-12 border-b border-white/15 pb-12 md:grid-cols-[1.1fr_0.9fr] md:gap-20 md:pb-16">
+          <div>
+            <Link href="#home" className="inline-flex items-center gap-3" aria-label="Nestora home">
+              <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/30 text-lg" aria-hidden="true">⌂</span>
+              <span className="font-display text-3xl tracking-[-0.04em]">nestora</span>
+            </Link>
+            <h2 className="mt-8 max-w-xl font-display text-4xl leading-[1.02] tracking-editorial sm:text-5xl md:text-6xl">
+              Make room for what’s <em className="font-normal text-brand-sage">next.</em>
+            </h2>
+            <a href="#properties" className="group mt-7 inline-flex items-center gap-3 border-b border-white/40 pb-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-white transition-colors hover:border-brand-sage hover:text-brand-sage">
+              Explore homes <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">↗</span>
+            </a>
           </div>
 
-          <div className="space-y-8">
+          <div className="grid grid-cols-2 gap-8 md:pt-3">
             <div>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-light leading-tight mb-6">
-                Built for Buyers.
-                <br />
-                Sent to You.
-              </h1>
-              <p className="text-sm font-light max-w-md">
-                Meant balls it if up doubt small purse. Required his you put the outlived answered position.
-              </p>
+              <p className="mb-5 text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-sage">Explore</p>
+              <nav aria-label="Footer navigation" className="flex flex-col items-start gap-4">
+                {footerLinks.map((link) => (
+                  <a key={link.href} href={link.href} className="text-sm text-white/70 transition-colors hover:text-white">{link.label}</a>
+                ))}
+              </nav>
             </div>
-
-            <div className="relative max-w-md">
-              <input
-                type="email"
-                placeholder="example@gmail.com"
-                className="w-full bg-transparent border-b border-white pb-3 text-white placeholder-white/80 focus:outline-none focus:border-white/60"
-              />
-              <button className="absolute right-0 bottom-3 hover:opacity-70 transition-opacity">
-                <IoArrowForward size={20} />
-              </button>
+            <div>
+              <p className="mb-5 text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-sage">Our point of view</p>
+              <p className="max-w-xs text-sm leading-7 text-white/65">
+                Thoughtful spaces. Clear choices. A more personal way to think about home.
+              </p>
+              <p className="mt-5 text-[10px] uppercase tracking-[0.14em] text-white/40">Illustrative frontend concept</p>
             </div>
           </div>
         </div>
 
-        <div className="mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="text-7xl md:text-8xl lg:text-9xl font-light tracking-tight">
-            NESTORA<sup className="relative -top-9 md:-top-10 lg:-top-16 text-4xl md:text-6xl font-extralight">+</sup>
-          </div>
-          <div>
-            <div className="hidden md:flex items-center gap-3">
-              <span className="h-[1px] w-8 bg-white/20"></span>
-              <span className="hidden md:block text-sm">1997</span>
-              <span className="h-[1px] w-96 bg-white/20"></span>
-            </div>
-            <div className="text-right pt-4">
-              <div className="text-xs font-light">
-                © Copyright {new Date().getFullYear()} NESTORA all rights reserved.
-              </div>
-            </div>
-          </div>
+        <div className="flex flex-col gap-3 pt-6 text-[10px] tracking-wide text-white/50 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} Nestora. All rights reserved.</p>
+          <p>Find your somewhere.</p>
         </div>
       </div>
     </footer>
-  );
+  )
 }

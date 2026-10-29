@@ -1,277 +1,125 @@
-'use client';
+'use client'
 
-import React, { useEffect, useRef, useState } from 'react';
-import CTAButton from '../CTAButton';
+import { useState, type FormEvent } from 'react'
+import Image from 'next/image'
 
-function LGBranch() {
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced && videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.removeAttribute('autoplay');
-    }
-  }, []);
-
-  return (
-    <section>
-      <div className="relative h-screen w-full overflow-hidden font-helvetica">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover mt-32"
-          ref={videoRef}
-        >
-          <source src="/Video/ContactBGVideo.mp4" type="video/mp4" />
-        </video>
-
-        <div className="absolute inset-0 backdrop-blur-sm bg-black/40 mt-32" />
-
-        <div className="relative z-10 h-full flex items-center px-8 md:px-16 lg:px-24">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full max-w-7xl mx-auto">
-            <div className="space-y-6 text-white">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-light lg:leading-[1.14] text-nowrap pt-36">
-                Stay informed about<br />
-                upcoming listings that match<br />
-                your budget.
-              </h2>
-
-              <p className="text-md font-light">
-                Subscribe to be the first to know about my new listings!
-              </p>
-
-              <div className="space-y-4 pt-4">
-                <div>
-                  <input
-                    type="email"
-                    className="w-full max-w-md text-md bg-transparent border-b border-white/30 pb-2 text-white placeholder-white/80 focus:outline-none focus:border-white transition"
-                    placeholder="Email"
-                  />
-                </div>
-
-                <div className="relative w-full max-w-md">
-                  <input
-                    type="text"
-                    className="w-full max-w-md text-md bg-transparent border-b border-white/30 pb-2 text-white placeholder-white/80 focus:outline-none focus:border-white transition"
-                    placeholder="Budget"
-                  />
-                  <div className="absolute right-0 top-1/2 -translate-y-1/2 text-white/80 text-md">
-                    +
-                  </div>
-                </div>
-
-                <div className="pt-2 text-sm">
-                  <CTAButton>
-                    +SUBMIT
-                  </CTAButton>
-                </div>
-              </div>
-            </div>
-
-            <div className="grid items-center justify-center lg:justify-start lg:absolute lg:top-20 lg:right-20">
-              <div className="bg-brand-orange text-white p-2 md:p-8 lg:pt-16 space-y-6 max-w-md">
-                <div className="absolute top-4 right-4 text-white text-xl hover:opacity-80 transition">+</div>
-                <div>
-                  <div className="text-3xl md:text-4xl font-light mb-2">25 Years</div>
-                  <div className="text-sm font-light">
-                    Of successful<br />
-                    experience in trading
-                  </div>
-                </div>
-              </div>
-              <div className="mt-4 flex items-center text-sm justify-between text-white">
-                <div className="font-extralight">I WANT TO</div>
-                <CTAButton href="">+BUY</CTAButton>
-                <CTAButton href="">+SELL</CTAButton>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-      <div className="relative h-[85vh] w-full overflow-hidden font-helvetica bg-bg-sheet content-center py-24 md:py-32 lg:py-40 px-8 md:px-16 lg:px-24">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-8 lg:gap-16 items-center">
-            <div>
-              <h2 className="text-5xl md:text-6xl lg:text-7xl font-light lg:leading-[1.14] text-nowrap">
-                Let's Move<br />
-                Something Great<br />
-                Together
-              </h2>
-            </div>
-
-            <div className="hidden lg:flex items-center justify-center">
-              <div className="text-6xl">+</div>
-            </div>
-
-            <div className="space-y-6 text-lg">
-              <CTAButton href="">
-                +GET STARTED TODAY
-              </CTAButton>
-
-              <p className="text-lg font-light leading-relaxed lg:tracking-wide max-w-lg">
-                Find your next home or connect with buyers who are already searching. Whether you're moving in or moving on, we're here to make it effortless.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function MobileBranch() {
-  const [email, setEmail] = useState('');
-  const [budget, setBudget] = useState('');
-  const mobileVideoRef = useRef<HTMLVideoElement | null>(null);
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced && mobileVideoRef.current) {
-      mobileVideoRef.current.pause();
-      mobileVideoRef.current.removeAttribute('autoplay');
-    }
-  }, []);
-
-  return (
-    <section>
-      <div className="relative h-auto w-full overflow-hidden font-helvetica">
-        <video
-          ref={mobileVideoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"               
-          className="absolute inset-0 w-full h-full object-cover"
-          aria-hidden
-        >
-          <source src="/Video/ContactBGVideo-mobile.mp4" type="video/mp4" />
-          <source src="/Video/ContactBGVideo.mp4" type="video/mp4" />
-        </video>
-
-        <div className="absolute inset-0 bg-black/50" />
-
-        <div className="relative z-10 flex items-center px-6 py-12">
-          <div className="w-full max-w-3xl mx-auto">
-            <div className="space-y-6 text-white">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-light leading-snug">
-                Stay informed about upcoming listings that match your budget.
-              </h2>
-
-              <p className="text-sm font-light">
-                Subscribe to be the first to know about my new listings!
-              </p>
-
-              <form
-                className="space-y-4 pt-4"
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  alert(`Subscribed: ${email} — budget: ${budget}`);
-                }}
-              >
-                <div>
-                  <label htmlFor="mobile-email" className="sr-only">Email</label>
-                  <input
-                    id="mobile-email"
-                    name="email"
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Email"
-                    required
-                    aria-label="Email address"
-                    className="w-full text-md bg-transparent border-b border-white/30 pb-2 text-white placeholder-white/80 focus:outline-none focus:border-white transition"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="mobile-budget" className="sr-only">Budget</label>
-                  <input
-                    id="mobile-budget"
-                    name="budget"
-                    type="text"
-                    value={budget}
-                    onChange={(e) => setBudget(e.target.value)}
-                    placeholder="Budget"
-                    aria-label="Budget"
-                    className="w-full text-md bg-transparent border-b border-white/30 pb-2 text-white placeholder-white/80 focus:outline-none focus:border-white transition"
-                  />
-                </div>
-
-                <div className="pt-2">
-                  <button type="submit" className="w-full inline-block">
-                    <CTAButton>
-                      +SUBMIT
-                    </CTAButton>
-                  </button>
-                </div>
-              </form>
-
-              <div className="mt-6 bg-brand-orange text-white p-6 rounded-md max-w-md relative">
-                <div className="absolute top-4 right-4 text-white text-xl">+</div>
-                <div className="text-2xl font-light mb-1">25 Years</div>
-                <div className="text-sm font-light">Of successful experience in trading</div>
-              </div>
-
-              <div className="mt-4 flex items-center justify-between text-white text-sm">
-                <div className="font-extralight">I WANT TO</div>
-                <div className="flex gap-3">
-                  <CTAButton href="">+BUY</CTAButton>
-                  <CTAButton href="">+SELL</CTAButton>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="bg-bg-sheet py-12 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="space-y-8 text-center">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light">
-              Let's Move Something Great Together
-            </h2>
-
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-4">
-              <CTAButton href="">+GET STARTED TODAY</CTAButton>
-              <p className="text-sm font-light max-w-xl">
-                Find your next home or connect with buyers who are already searching. Whether you're moving in or moving on, we're here to make it effortless.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
+const contactImage = 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=85'
 
 export default function ContactSection() {
-  const [isLg, setIsLg] = useState<boolean | null>(null);
+  const [form, setForm] = useState({ name: '', email: '', interest: 'Buying a home', budget: '' })
+  const [status, setStatus] = useState('')
 
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const mq = window.matchMedia('(min-width: 1024px)');
-    const update = () => setIsLg(mq.matches);
-    update();
+  const updateField = (field: keyof typeof form, value: string) => {
+    setForm((current) => ({ ...current, [field]: value }))
+    if (status) setStatus('')
+  }
 
-    if (mq.addEventListener) mq.addEventListener('change', update);
-    else mq.addListener(update);
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    setStatus('Demo only: your details have not been sent or stored. Connect an enquiry endpoint to receive real leads.')
+  }
 
-    return () => {
-      if (mq.removeEventListener) mq.removeEventListener('change', update);
-      else mq.removeListener(update);
-    };
-  }, []);
+  return (
+    <section id="contact" className="bg-brand-cream py-16 sm:py-20 lg:py-28">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
+        <div className="grid overflow-hidden rounded-2xl bg-brand-forest text-white lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="relative min-h-[280px] overflow-hidden sm:min-h-[360px] lg:min-h-full">
+            <Image
+              src={contactImage}
+              alt="Warm, sunlit living space with natural finishes"
+              fill
+              sizes="(max-width: 1024px) 100vw, 42vw"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/75 via-brand-deep/10 to-transparent lg:bg-gradient-to-r" />
+            <div className="absolute bottom-6 left-6 right-6 sm:bottom-8 sm:left-8 sm:right-8 lg:bottom-10 lg:left-10">
+              <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.22em] text-white/75">The next chapter starts somewhere</p>
+              <p className="max-w-md font-display text-3xl leading-tight sm:text-4xl">Let’s find the place that feels right.</p>
+            </div>
+          </div>
 
-  if (isLg === null) return <MobileBranch />;
+          <div className="p-6 sm:p-8 md:p-10 lg:p-12 xl:p-14">
+            <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.24em] text-brand-sage sm:text-xs">Start a conversation</p>
+            <h2 className="max-w-lg font-display text-3xl leading-tight tracking-editorial sm:text-4xl md:text-5xl">Tell us what home looks like to you.</h2>
+            <p className="mt-4 max-w-lg text-sm leading-7 text-white/70">
+              Share a few details to shape your search. This form is a UI demo and is not connected to a lead-management service.
+            </p>
 
-  return isLg ? <LGBranch /> : <MobileBranch />;
+            <form className="mt-8 space-y-5" onSubmit={handleSubmit}>
+              <div className="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label htmlFor="nestora-name" className="mb-2 block text-[10px] font-semibold uppercase tracking-[0.16em] text-white/75">Your name</label>
+                  <input
+                    id="nestora-name"
+                    name="name"
+                    autoComplete="name"
+                    value={form.name}
+                    onChange={(event) => updateField('name', event.target.value)}
+                    required
+                    className="min-h-12 w-full border-b border-white/30 bg-transparent py-3 text-sm text-white placeholder:text-white/40 focus:border-brand-sage focus:outline-none"
+                    placeholder="Name"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="nestora-email" className="mb-2 block text-[10px] font-semibold uppercase tracking-[0.16em] text-white/75">Email address</label>
+                  <input
+                    id="nestora-email"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    value={form.email}
+                    onChange={(event) => updateField('email', event.target.value)}
+                    required
+                    className="min-h-12 w-full border-b border-white/30 bg-transparent py-3 text-sm text-white placeholder:text-white/40 focus:border-brand-sage focus:outline-none"
+                    placeholder="you@example.com"
+                  />
+                </div>
+              </div>
+
+              <div className="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label htmlFor="nestora-interest" className="mb-2 block text-[10px] font-semibold uppercase tracking-[0.16em] text-white/75">I’m interested in</label>
+                  <select
+                    id="nestora-interest"
+                    name="interest"
+                    value={form.interest}
+                    onChange={(event) => updateField('interest', event.target.value)}
+                    className="min-h-12 w-full border-b border-white/30 bg-brand-forest py-3 text-sm text-white focus:border-brand-sage focus:outline-none"
+                  >
+                    <option>Buying a home</option>
+                    <option>Renting a home</option>
+                    <option>Selling a property</option>
+                    <option>Exploring possibilities</option>
+                  </select>
+                </div>
+                <div>
+                  <label htmlFor="nestora-budget" className="mb-2 block text-[10px] font-semibold uppercase tracking-[0.16em] text-white/75">Budget (optional)</label>
+                  <select
+                    id="nestora-budget"
+                    name="budget"
+                    value={form.budget}
+                    onChange={(event) => updateField('budget', event.target.value)}
+                    className="min-h-12 w-full border-b border-white/30 bg-brand-forest py-3 text-sm text-white focus:border-brand-sage focus:outline-none"
+                  >
+                    <option value="">Select a range</option>
+                    <option value="Under $500k">Under $500k</option>
+                    <option value="$500k–$1m">$500k–$1m</option>
+                    <option value="$1m–$2m">$1m–$2m</option>
+                    <option value="$2m+">$2m+</option>
+                    <option value="Undecided">Still deciding</option>
+                  </select>
+                </div>
+              </div>
+
+              <button type="submit" className="group mt-2 inline-flex min-h-12 items-center justify-center gap-4 rounded-full bg-brand-cream px-6 py-3 text-[10px] font-bold uppercase tracking-[0.14em] text-brand-forest transition-all duration-300 hover:-translate-y-0.5 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-forest">
+                Preview inquiry <span aria-hidden="true" className="text-base transition-transform group-hover:translate-x-1">↗</span>
+              </button>
+
+              {status && <p role="status" aria-live="polite" className="rounded-xl border border-white/20 bg-white/10 p-4 text-xs leading-6 text-white/85">{status}</p>}
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
 }
