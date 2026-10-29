@@ -1,7 +1,14 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
 import { HiOutlineMenu, HiX } from 'react-icons/hi'
+
+const links = [
+  { label: 'Properties', href: '#properties' },
+  { label: 'Our approach', href: '#approach' },
+  { label: 'The Nestora way', href: '#experience' },
+]
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
@@ -9,13 +16,20 @@ export default function Navbar() {
   const panelRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
-    function onKey(e: KeyboardEvent) {
-      if (e.key === 'Escape') setOpen(false)
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setOpen(false)
+        menuBtnRef.current?.focus()
+      }
     }
-    function onClick(e: MouseEvent) {
+    const onClick = (event: MouseEvent) => {
       if (!open) return
-      if (panelRef.current && !panelRef.current.contains(e.target as Node) &&
-          menuBtnRef.current && !menuBtnRef.current.contains(e.target as Node)) {
+      if (
+        panelRef.current &&
+        !panelRef.current.contains(event.target as Node) &&
+        menuBtnRef.current &&
+        !menuBtnRef.current.contains(event.target as Node)
+      ) {
         setOpen(false)
       }
     }
@@ -27,82 +41,77 @@ export default function Navbar() {
     }
   }, [open])
 
-  useEffect(() => {
-    if (!open) {
-      menuBtnRef.current?.focus()
-    } else {
-      const first = panelRef.current?.querySelector<HTMLElement>('a,button')
-      first?.focus()
-    }
-  }, [open])
+  const closeMenu = () => setOpen(false)
 
   return (
-    <nav className="sticky top-0 z-40">
-      <div className="bg-brand-orange text-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between h-14">
-            <div className="flex items-center gap-6">
-              <div className="text-2xl font-semibold">
-                NESTORA<span className="text-white/90"><sup>+</sup></span>
-              </div>
+    <header className="sticky top-0 z-50 border-b border-brand-line/80 bg-brand-cream/95 backdrop-blur-xl">
+      <nav aria-label="Main navigation" className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-4 sm:px-8 lg:px-12">
+        <Link href="#home" onClick={closeMenu} className="group inline-flex items-center gap-3" aria-label="Nestora home">
+          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-forest text-brand-cream transition-transform duration-300 group-hover:rotate-[-8deg]">
+            <svg viewBox="0 0 28 28" className="h-5 w-5" fill="none" aria-hidden="true">
+              <path d="M4 13.5 14 5l10 8.5V24h-7v-7h-6v7H4V13.5Z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+              <path d="m9 9 5-4 5 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+            </svg>
+          </span>
+          <span className="leading-none">
+            <span className="block font-display text-2xl tracking-[-0.045em] text-brand-ink">nestora</span>
+            <span className="mt-1 block text-[9px] uppercase tracking-[0.24em] text-brand-muted">Find your somewhere</span>
+          </span>
+        </Link>
 
-              <div className="hidden md:flex items-center gap-3">
-                <span className="h-[1px] w-8 bg-white/20" />
-                <span className="hidden md:block text-sm">1997</span>
-                <span className="h-[1px] w-96 bg-white/20" />
-              </div>
-            </div>
-
-            <div className="hidden sm:flex items-center gap-8 text-sm uppercase tracking-wider">
-              <a className="hidden sm:inline-block hover:underline" href="#properties">Properties</a>
-              <a className="hidden sm:inline-block hover:underline" href="">Studio</a>
-              <a className="hidden sm:inline-block hover:underline" href="">Process</a>
-              <button aria-label="add property" className="px-2">+ADD PROPERTY</button>
-            </div>
-
-            <div className="flex items-center gap-2 sm:hidden">
-              <button
-                ref={menuBtnRef}
-                aria-controls="mobile-menu"
-                aria-expanded={open}
-                aria-label={open ? 'Close menu' : 'Open menu'}
-                onClick={() => setOpen(v => !v)}
-                className="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-white/30"
-              >
-                {open ? <HiX className="w-6 h-6" /> : <HiOutlineMenu className="w-6 h-6" />}
-              </button>
-            </div>
-          </div>
+        <div className="hidden items-center gap-8 md:flex">
+          {links.map((link) => (
+            <a key={link.href} href={link.href} className="text-[11px] font-medium uppercase tracking-[0.12em] text-brand-ink/75 transition-colors hover:text-brand-forest">
+              {link.label}
+            </a>
+          ))}
         </div>
-      </div>
+
+        <div className="hidden md:block">
+          <a href="#contact" className="group inline-flex items-center gap-3 rounded-full bg-brand-forest px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-white transition-all duration-300 hover:bg-brand-deep hover:shadow-soft">
+            Let’s talk
+            <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">↗</span>
+          </a>
+        </div>
+
+        <button
+          ref={menuBtnRef}
+          type="button"
+          aria-controls="mobile-menu"
+          aria-expanded={open}
+          aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
+          onClick={() => setOpen((current) => !current)}
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-brand-line text-brand-ink transition-colors hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-forest md:hidden"
+        >
+          {open ? <HiX className="h-5 w-5" /> : <HiOutlineMenu className="h-5 w-5" />}
+        </button>
+      </nav>
 
       <div
         id="mobile-menu"
         ref={panelRef}
-        className={`sm:hidden bg-brand-orange text-white transition-[max-height,opacity,transform] duration-300 ease-out overflow-hidden ${
-          open ? 'max-h-[500px] opacity-100 transform-none' : 'max-h-0 opacity-0 -translate-y-2'
-        }`}
         aria-hidden={!open}
+        className={`overflow-hidden border-t border-brand-line bg-brand-cream transition-[max-height,opacity,transform] duration-300 ease-out md:hidden ${
+          open ? 'max-h-96 translate-y-0 opacity-100' : 'max-h-0 -translate-y-1 opacity-0'
+        }`}
       >
-        <div className="px-6 pt-4 pb-6">
-          <div className="flex flex-col gap-4">
-            <a href="#properties" onClick={() => setOpen(false)} className="block text-base uppercase tracking-wider hover:underline">Properties</a>
-            <a href="" onClick={() => setOpen(false)} className="block text-base uppercase tracking-wider hover:underline">Studio</a>
-            <a href="" onClick={() => setOpen(false)} className="block text-base uppercase tracking-wider hover:underline">Process</a>
-            <button
-              onClick={() => { setOpen(false);}}
-              className="mt-2 text-left py-2 px-3 bg-white/10 rounded-sm"
+        <div className="space-y-1 px-5 py-4 sm:px-8">
+          {links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              tabIndex={open ? 0 : -1}
+              onClick={closeMenu}
+              className="block rounded-xl px-4 py-3 text-sm text-brand-ink transition-colors hover:bg-white"
             >
-              +ADD PROPERTY
-            </button>
-
-            <div className="border-t border-white/10 mt-4 pt-4">
-              <div className="text-sm text-white/90">NESTORA <span className="text-white/70">• 1997</span></div>
-              <div className="mt-2 text-xs text-white/70">Discover curated residences & services</div>
-            </div>
-          </div>
+              {link.label}
+            </a>
+          ))}
+          <a href="#contact" tabIndex={open ? 0 : -1} onClick={closeMenu} className="mt-2 flex items-center justify-between rounded-xl bg-brand-forest px-4 py-3 text-sm font-medium text-white">
+            Start a conversation <span aria-hidden="true">↗</span>
+          </a>
         </div>
       </div>
-    </nav>
+    </header>
   )
 }
