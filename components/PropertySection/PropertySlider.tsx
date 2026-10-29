@@ -6,9 +6,9 @@ import { Location } from "@/types/location";
 
 export default function PropertySlider() {
   const locations: Location[] = [
-    { id: 'los-angeles', name: 'Los Angeles', image: '/Images/myrtle-property.webp' },
-    { id: 'north-junction', name: 'North Junction', image: '/Images/sidney-property.webp' },
-    { id: 'dubai', name: 'Dubai', image: '/Images/clifton-property.webp' },
+    { id: 'garden-retreats', name: 'Garden retreats', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=85' },
+    { id: 'urban-sanctuaries', name: 'Urban sanctuaries', image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=85' },
+    { id: 'light-filled-living', name: 'Light-filled living', image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=85' },
   ];
 
   const infiniteLocations = React.useMemo(() => [...locations, ...locations, ...locations], [locations]);
@@ -209,10 +209,10 @@ export default function PropertySlider() {
   }, []);
 
   return (
-    <div className="relative bg-bg-sheet">
+    <div className="relative bg-brand-cream">
       <div
         ref={scrollContainerRef}
-        className="overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing"
+        className="overflow-x-auto px-5 pb-4 scrollbar-hide cursor-grab active:cursor-grabbing sm:px-8 lg:px-12"
         role="list"
         aria-label="Featured property locations"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
