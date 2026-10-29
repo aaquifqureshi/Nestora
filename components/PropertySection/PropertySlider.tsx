@@ -39,7 +39,7 @@ export default function PropertySlider() {
     return measured;
   };
 
-  const computeCardWidthFromViewport = () => Math.round(window.innerWidth * 0.47 + 4);
+  const computeCardWidthFromViewport = () => measureCard() || Math.round(window.innerWidth * 0.34 + 4);
 
   const computeInitialScroll = () => {
     const container = scrollContainerRef.current;
