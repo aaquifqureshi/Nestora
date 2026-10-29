@@ -15,7 +15,7 @@ export default function Hero() {
           initial={reduceMotion ? false : { opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
-          className="relative z-10 py-4 lg:py-8"
+          className="relative z-10 min-w-0 py-4 lg:py-8"
         >
           <div className="mb-7 inline-flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.24em] text-brand-forest sm:text-xs">
             <span className="h-px w-8 bg-brand-clay" />
@@ -56,7 +56,7 @@ export default function Hero() {
           initial={reduceMotion ? false : { opacity: 0, scale: 0.985 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: reduceMotion ? 0 : 0.12, ease: 'easeOut' }}
-          className="relative mx-auto w-full max-w-2xl"
+          className="mx-auto w-full min-w-0 max-w-2xl"
         >
           <div className="relative aspect-[0.92] overflow-hidden rounded-t-[10rem] rounded-b-2xl sm:rounded-t-[14rem] lg:aspect-[0.88] lg:rounded-t-[15rem]">
             <Image
@@ -67,20 +67,16 @@ export default function Hero() {
               sizes="(max-width: 1024px) 100vw, 55vw"
               className="object-cover transition-transform duration-[1400ms] ease-out hover:scale-[1.035]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-brand-ink/45 via-transparent to-brand-ink/5" />
-            <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4 text-white sm:bottom-8 sm:left-8 sm:right-8">
-              <div>
-                <p className="mb-2 text-[9px] uppercase tracking-[0.24em] text-white/75">A place to begin</p>
-                <p className="font-display text-2xl sm:text-3xl">Come home to possibility.</p>
-              </div>
-              <a href="#properties" aria-label="Explore property collection" className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white text-brand-ink transition-transform duration-300 hover:-rotate-45">
-                <span aria-hidden="true" className="text-xl">↗</span>
-              </a>
-            </div>
           </div>
-          <div className="absolute -bottom-4 left-4 hidden border border-brand-line bg-brand-cream px-5 py-4 shadow-soft sm:block md:-left-10 md:bottom-10">
-            <p className="text-[9px] uppercase tracking-[0.2em] text-brand-muted">The Nestora outlook</p>
-            <p className="mt-1 font-display text-lg text-brand-ink">Space for what’s next.</p>
+
+          <div className="mt-4 flex items-center justify-between gap-4 border-t border-brand-line px-1 py-4 sm:mt-5 sm:py-5">
+            <div className="min-w-0">
+              <p className="mb-1 text-[9px] font-semibold uppercase tracking-[0.2em] text-brand-muted">A place to begin</p>
+              <p className="font-display text-xl leading-snug text-brand-ink sm:text-2xl">Come home to possibility.</p>
+            </div>
+            <a href="#properties" aria-label="Explore property collection" className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-brand-line bg-white text-brand-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-forest hover:bg-brand-forest hover:text-white">
+              <span aria-hidden="true" className="text-xl">↗</span>
+            </a>
           </div>
         </motion.div>
       </div>
