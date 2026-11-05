@@ -24,7 +24,7 @@ export default function FeedbackSection() {
   const reduceMotion = useReducedMotion()
 
   return (
-    <section id="experience" className="bg-white py-16 sm:py-20 lg:py-28">
+    <section id="experience" aria-labelledby="experience-heading" className="bg-white py-16 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
           <motion.div
@@ -35,7 +35,7 @@ export default function FeedbackSection() {
             className="lg:sticky lg:top-28 lg:self-start"
           >
             <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.24em] text-brand-forest sm:text-xs">The Nestora way</p>
-            <h2 className="max-w-lg font-display text-4xl leading-[1.02] tracking-editorial text-brand-ink sm:text-5xl md:text-6xl">
+            <h2 id="experience-heading" className="max-w-lg font-display text-4xl leading-[1.02] tracking-editorial text-brand-ink sm:text-5xl md:text-6xl">
               Make space for what <em className="font-normal text-brand-forest">matters.</em>
             </h2>
             <p className="mt-5 max-w-md text-sm leading-7 text-brand-muted sm:text-base sm:leading-8">

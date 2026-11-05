@@ -46,11 +46,11 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-brand-line/80 bg-brand-cream/95 backdrop-blur-xl">
       <nav aria-label="Main navigation" className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-4 sm:px-8 lg:px-12">
-        <Link href="#home" onClick={closeMenu} className="group inline-flex items-center gap-3" aria-label="Nestora home">
+        <Link href="#home" onClick={closeMenu} className="group inline-flex items-center gap-3 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-forest focus-visible:ring-offset-4 focus-visible:ring-offset-brand-cream" aria-label="Nestora home">
           <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-forest text-brand-cream transition-transform duration-300 group-hover:rotate-[-8deg]">
             <svg viewBox="0 0 28 28" className="h-5 w-5" fill="none" aria-hidden="true">
               <path d="M4 13.5 14 5l10 8.5V24h-7v-7h-6v7H4V13.5Z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
-              <path d="m9 9 5-4 5 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+              <path d="m9 9 5-4 5 4" stroke="#a8b7a6" strokeWidth="1.6" strokeLinecap="round" />
             </svg>
           </span>
           <span className="leading-none">
@@ -61,14 +61,15 @@ export default function Navbar() {
 
         <div className="hidden items-center gap-8 md:flex">
           {links.map((link) => (
-            <a key={link.href} href={link.href} className="text-[11px] font-medium uppercase tracking-[0.12em] text-brand-ink/75 transition-colors hover:text-brand-forest">
+            <a key={link.href} href={link.href} className="group relative py-2 text-[11px] font-medium uppercase tracking-[0.12em] text-brand-ink/75 transition-colors hover:text-brand-forest focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-forest">
               {link.label}
+              <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-px origin-left scale-x-0 bg-brand-forest transition-transform duration-300 group-hover:scale-x-100" />
             </a>
           ))}
         </div>
 
         <div className="hidden md:block">
-          <a href="#contact" className="group inline-flex items-center gap-3 rounded-full bg-brand-forest px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-white transition-all duration-300 hover:bg-brand-deep hover:shadow-soft">
+          <a href="#contact" className="group inline-flex items-center gap-3 rounded-full bg-brand-forest px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-deep hover:shadow-soft active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-forest focus-visible:ring-offset-2 focus-visible:ring-offset-brand-cream">
             Let’s talk
             <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">↗</span>
           </a>
@@ -81,7 +82,7 @@ export default function Navbar() {
           aria-expanded={open}
           aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
           onClick={() => setOpen((current) => !current)}
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-brand-line text-brand-ink transition-colors hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-forest md:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-brand-line text-brand-ink transition-colors hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-forest focus-visible:ring-offset-2 focus-visible:ring-offset-brand-cream md:hidden"
         >
           {open ? <HiX className="h-5 w-5" /> : <HiOutlineMenu className="h-5 w-5" />}
         </button>
@@ -102,12 +103,12 @@ export default function Navbar() {
               href={link.href}
               tabIndex={open ? 0 : -1}
               onClick={closeMenu}
-              className="block rounded-xl px-4 py-3 text-sm text-brand-ink transition-colors hover:bg-white"
+              className="block rounded-xl px-4 py-3 text-sm text-brand-ink transition-colors hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-forest"
             >
               {link.label}
             </a>
           ))}
-          <a href="#contact" tabIndex={open ? 0 : -1} onClick={closeMenu} className="mt-2 flex items-center justify-between rounded-xl bg-brand-forest px-4 py-3 text-sm font-medium text-white">
+          <a href="#contact" tabIndex={open ? 0 : -1} onClick={closeMenu} className="mt-2 flex items-center justify-between rounded-xl bg-brand-forest px-4 py-3 text-sm font-medium text-white transition-colors hover:bg-brand-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-forest focus-visible:ring-offset-2">
             Start a conversation <span aria-hidden="true">↗</span>
           </a>
         </div>

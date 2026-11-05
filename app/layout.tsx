@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { DM_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
@@ -20,9 +20,31 @@ export const metadata: Metadata = {
     template: "%s | Nestora",
   },
   description:
-    "A more considered way to find your next home. Explore thoughtfully presented properties and take the next step with confidence.",
+    "A thoughtful way to discover your next home. Explore considered spaces, compare illustrative residences, and take your next step with clarity.",
   applicationName: "Nestora",
-  keywords: ["real estate", "homes", "property", "residential property"],
+  keywords: ["Nestora", "real estate", "homes", "property", "residential property"],
+  manifest: "/manifest.json",
+  icons: {
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+    shortcut: ["/favicon.svg"],
+    apple: [{ url: "/apple-touch-icon.svg", type: "image/svg+xml" }],
+  },
+  openGraph: {
+    title: "Nestora — Find a Place That Feels Like Yours",
+    description: "Thoughtful spaces. Clear choices. A more personal way to think about home.",
+    siteName: "Nestora",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nestora — Find a Place That Feels Like Yours",
+    description: "Thoughtful spaces. Clear choices. A more personal way to think about home.",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#24483e",
+  colorScheme: "light",
 };
 
 export default function RootLayout({

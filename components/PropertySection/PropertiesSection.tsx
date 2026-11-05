@@ -89,12 +89,27 @@ export default function PropertiesSection() {
             return (
               <button
                 key={property.id}
+                id={`property-tab-${property.id}`}
                 type="button"
                 role="tab"
                 aria-selected={active}
                 aria-controls="selected-property-details"
+                tabIndex={active ? 0 : -1}
+                onKeyDown={(event) => {
+                  const currentIndex = properties.findIndex((item) => item.id === selectedProperty.id)
+                  const nextIndex =
+                    event.key === 'ArrowRight' ? (currentIndex + 1) % properties.length :
+                    event.key === 'ArrowLeft' ? (currentIndex - 1 + properties.length) % properties.length :
+                    event.key === 'Home' ? 0 :
+                    event.key === 'End' ? properties.length - 1 : -1
+                  if (nextIndex !== -1) {
+                    event.preventDefault()
+                    setSelectedProperty(properties[nextIndex])
+                    document.getElementById(`property-tab-${properties[nextIndex].id}`)?.focus()
+                  }
+                }}
                 onClick={() => setSelectedProperty(property)}
-                className={`inline-flex shrink-0 items-center gap-3 rounded-full border px-4 py-3 text-left text-xs transition-all duration-300 ${
+                className={`inline-flex shrink-0 items-center gap-3 rounded-full border px-4 py-3 text-left text-xs transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-forest focus-visible:ring-offset-2 ${
                   active
                     ? 'border-brand-forest bg-brand-forest text-white'
                     : 'border-brand-line bg-transparent text-brand-muted hover:border-brand-sage hover:bg-white/70'
@@ -107,7 +122,7 @@ export default function PropertiesSection() {
           })}
         </div>
 
-        <div id="selected-property-details" role="tabpanel" aria-label={selectedProperty.name}>
+        <div id="selected-property-details" role="tabpanel" aria-labelledby={`property-tab-${selectedProperty.id}`} tabIndex={0} className="rounded-2xl focus-visible:outline-none">
           <PropertyDetails property={selectedProperty} />
         </div>
 
