@@ -15,6 +15,7 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 6rem;
   background: var(--nestora-cream);
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -44,10 +45,21 @@ textarea {
   -webkit-tap-highlight-color: transparent;
 }
 
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
 img,
 video {
   display: block;
   max-width: 100%;
+}
+
+@media (hover: none) {
+  .property-card img {
+    transform: none !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
