@@ -1,31 +1,23 @@
 # Nestora
 
-Nestora is a real-estate landing page concept built with Next.js, React, TypeScript, Tailwind CSS, and Framer Motion. The experience is designed around thoughtful property discovery, editorial typography, architectural photography, and clear next steps.
+Nestora is an editorial real-estate landing page concept built with Next.js, React, TypeScript, Tailwind CSS, and Framer Motion. It pairs architectural imagery with a warm cream, forest-green, sage, and clay visual system.
 
-## Design direction
+## Experience
 
-- Forest green, warm cream, sage, and clay accents.
-- Playfair Display-inspired editorial headlines paired with a calm sans-serif interface.
-- Image-led responsive hero and curated property presentation.
-- Accessible mobile navigation, property selection tabs, and scroll-aware motion.
-- Reduced-motion support for animated sections.
-- Consistent rounded calls to action, clear section anchors, and responsive spacing.
-
-## Current experience
-
-- Responsive navigation and cinematic image-led hero.
-- Editorial brand statement and approach sections.
-- Selectable illustrative property collection with location, size, bed/bath, and sample price details.
+- Responsive navigation with an accessible mobile menu.
+- Image-led hero and brand point of view.
+- Selectable illustrative property collection with keyboard-operable tabs.
 - Draggable horizontal lifestyle image rail.
-- Brand principles section instead of fabricated testimonials and partner logos.
-- Responsive inquiry UI with client-side validation.
-- Updated metadata and PWA theme colors.
+- Editorial process and brand-principle sections.
+- Responsive enquiry form with client-side required-field validation and explicit demo feedback.
+- Nestora SVG favicon, touch icon, web manifest, and social metadata.
+- Reduced-motion support, visible keyboard focus, and responsive spacing.
 
 ## Demo limitations
 
-This is a frontend concept, not a live listing service. The property names, addresses, prices, and images in the showcase are illustrative. There is no property API, database, authentication, saved-search service, or lead-management backend. The inquiry form shows a clear demo status and does not send or store submissions.
+This is a frontend concept, not a live listing service. Property names, addresses, prices, and images are illustrative. There is no property API, database, authentication, saved-search service, or lead-management backend. The enquiry form does not send or store submissions.
 
-Before production use, replace the sample listings with verified inventory, configure a real contact destination, connect an enquiry endpoint, and review the image license/usage requirements for the chosen assets.
+Before production use, replace sample listings with verified inventory, configure a real contact destination, connect an enquiry endpoint, and review image licensing/usage requirements.
 
 ## Tech stack
 
