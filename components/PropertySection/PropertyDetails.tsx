@@ -6,16 +6,17 @@ import type { Property } from '@/types/properties'
 
 export default function PropertyDetails({ property }: { property: Property }) {
   return (
-    <article className="grid overflow-hidden rounded-2xl border border-brand-line bg-white shadow-soft lg:grid-cols-[1.2fr_0.8fr]">
-      <div className="relative min-h-[300px] overflow-hidden sm:min-h-[420px] lg:min-h-[520px]">
+    <article className="group grid overflow-hidden rounded-2xl border border-brand-line bg-white shadow-soft transition-shadow duration-500 hover:shadow-[0_24px_70px_rgba(32,41,35,0.13)] lg:grid-cols-[1.2fr_0.8fr]">
+      <div className="relative min-h-[300px] overflow-hidden bg-brand-sage/20 sm:min-h-[420px] lg:min-h-[520px]">
         <Image
           src={property.image}
           alt={`Exterior and architectural details of ${property.name}`}
           fill
           sizes="(max-width: 1024px) 100vw, 62vw"
-          className="object-cover transition-transform duration-[1200ms] hover:scale-[1.035]"
+          className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.025]"
         />
-        <div className="absolute left-5 top-5 flex items-center gap-2 rounded-full bg-brand-cream/95 px-4 py-2 text-[9px] font-semibold uppercase tracking-[0.16em] text-brand-forest shadow-sm sm:left-7 sm:top-7">
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+        <div className="absolute left-5 top-5 flex items-center gap-2 rounded-full border border-white/60 bg-brand-cream/95 px-4 py-2 text-[9px] font-semibold uppercase tracking-[0.16em] text-brand-forest shadow-sm sm:left-7 sm:top-7">
           <span className="h-1.5 w-1.5 rounded-full bg-brand-forest" />
           Sample listing
         </div>
@@ -27,7 +28,7 @@ export default function PropertyDetails({ property }: { property: Property }) {
             <p className="text-[10px] uppercase tracking-[0.18em] text-brand-muted">Featured residence</p>
             <p className="mt-2 text-xs text-brand-muted">Concept collection · {property.year}</p>
           </div>
-          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-brand-line text-lg text-brand-forest" aria-hidden="true">↗</span>
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-brand-line text-lg text-brand-forest transition-all duration-300 group-hover:-rotate-45 group-hover:border-brand-forest group-hover:bg-brand-forest group-hover:text-white" aria-hidden="true">↗</span>
         </div>
 
         <div className="my-9">
