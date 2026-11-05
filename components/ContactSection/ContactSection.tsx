@@ -24,7 +24,7 @@ export default function ContactSection() {
   return (
     <section id="contact" aria-labelledby="contact-heading" className="bg-brand-cream py-16 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
-        <div className="grid overflow-hidden rounded-2xl bg-brand-forest text-white">
+        <div className="grid overflow-hidden rounded-2xl bg-brand-forest text-white lg:grid-cols-[0.9fr_1.1fr]">
           <div className="relative min-h-[280px] overflow-hidden sm:min-h-[360px] lg:min-h-full">
             <Image
               src={contactImage}
